@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+{% block title %}liver disease prediction using machine learning{% endblock %}
+{% block content %}
+
+	<h1><u>liver disease prediction using machine learning:</u></h1>
+  </br>
+  </br>
+  <h2><center><b>{{ prediction_text }}</centre></b></h2>
+	
+     <!-- Main Input For Receiving Query to our ML -->
+  <div class="container">
+    <form action="{{ url_for('predict')}}"method="post">
+
+      <div class="row">
+        <div class="col-25">
+          <label for="TMC">Status:</label>  
+        </div>
+        <div class="col-75">
+		<select name="Status">
+		<option value="0">C</option>
+        <option value="1">CL</option>
+        <option value="-1">D</option>
+		</select>
+        
+        </div>
+      </div>
+      </br>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="TMC">Drug:</label>  
+        </div>
+        <div class="col-75">
+		<select name="Drug">
+		<option value="0">D-penicillamine</option>
+        <option value="1">Placebo</option>
+		</select>
+        </div>
+      </div>
+      </br>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="Start_Latitude">Age:</label>
+         </div>
+        <div class="col-75">
+          <input type="text" name="Age" placeholder="Age" required="required"/>
+        </div>
+      </div>
+      </br>
+
+
+     <div class="row">
+        <div class="col-25">
+          <label for="TMC">Gender:</label>  
+        </div>
+        <div class="col-75">
+		<select name="Sex">
+		<option value="0">M</option>
+        <option value="1">F</option>
+		</select>
+        </div>
+      </div>
+      </br>
+
+     
+     <div class="row">
+        <div class="col-25">
+          <label for="TMC">Ascites:</label>  
+        </div>
+        <div class="col-75">
+		<select name="Ascites">
+		<option value="0">N</option>
+        <option value="1">Y</option>
+		</select>
+        </div>
+      </div>
+      </br>
+	  
+     <div class="row">
+        <div class="col-25">
+          <label for="TMC">Hepatomegaly:</label>  
+        </div>
+        <div class="col-75">
+		<select name="Hepatomegaly">
+		<option value="0">N</option>
+        <option value="1">Y</option>
+		</select>
+        </div>
+      </div>
+      </br>	  
+
+     <div class="row">
+        <div class="col-25">
+          <label for="TMC">Spiders:</label>  
+        </div>
+        <div class="col-75">
+		<select name="Spiders">
+		<option value="0">N</option>
+        <option value="1">Y</option>
+		</select>
+        </div>
+      </div>
+      </br>	 
+ 	  
+
+     <div class="row">
+        <div class="col-25">
+          <label for="TMC">Edema:</label>  
+        </div>
+        <div class="col-75">
+		<select name="Edema">
+		<option value="0">N</option>
+        <option value="1">Y</option>
+        <option value="-1">S</option>
+		</select>		
+        </div>
+      </div>
+      </br>	 	  
+
+      <div class="row">
+        <div class="col-25">
+          <label for="County" name="County">Bilirubin:</label>
+         </div>
+        <div class="col-75">
+          <input type="text" name="Bilirubin" placeholder="Bilirubin" required="required"/>
+        </div>
+      </div>
+      </br>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="State" name="State">Cholesterol:</label>
+         </div>
+        <div class="col-75">
+          <input type="text" name="Cholesterol" placeholder="Cholesterol" required="required"/>
+        </div>
+      </div>
+      </br>
+
+      
+      <div class="row">
+        <div class="col-25">
+          <label for="Temperature" name="Temperature">Albumin:</label>
+         </div>
+        <div class="col-75">
+          <input type="text" name="Albumin" placeholder="Albumin" required="required"/>
+        </div>
+      </div>
+      </br>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="Humidity" name="Humidity">Copper:</label>
+         </div>
+        <div class="col-75">
+          <input type="text" name="Copper" placeholder="Copper" required="required"/>
+        </div>
+      </div>
+      </br>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="Pressure" name="Pressure">Alk_Phos:</label>
+         </div>
+        <div class="col-75">
+          <input type="text" name="Alk_Phos" placeholder="Alk_Phos" required="required"/>
+        </div>
+      </div>
+      </br>
+
+
+      <div class="row">
+        <div class="col-25">
+          <label for="Pressure" name="Pressure">SGOT:</label>
+         </div>
+        <div class="col-75">
+          <input type="text" name="SGOT" placeholder="SGOT" required="required"/>
+        </div>
+      </div>
+      </br>
+
+
+      <div class="row">
+        <div class="col-25">
+          <label for="Pressure" name="Pressure">Tryglicerides:</label>
+         </div>
+        <div class="col-75">
+          <input type="text" name="Tryglicerides" placeholder="Tryglicerides" required="required"/>
+        </div>
+      </div>
+      </br>
+
+
+      <div class="row">
+        <div class="col-25">
+          <label for="Pressure" name="Pressure">Platelets:</label>
+         </div>
+        <div class="col-75">
+          <input type="text" name="Platelets" placeholder="Platelets" required="required"/>
+        </div>
+      </div>
+      </br>	  
+
+      <div class="row">
+        <div class="col-25">
+          <label for="Pressure" name="Pressure">Prothrombin:</label>
+         </div>
+        <div class="col-75">
+          <input type="text" name="Prothrombin" placeholder="Prothrombin" required="required"/>
+        </div>
+      </div>
+      </br>	  	  
+
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+     
+    
+
+    </form>
+  </div>
+
+   <br>
+   <br>
+
+
+{% endblock %}
